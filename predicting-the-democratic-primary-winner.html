@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Predicting the Democratic Primary Winner</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+  <link href="/" rel="canonical" />
+
+  <!-- Feed -->
+
+  <link href="/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+  <!-- Code highlight color scheme -->
+      <link href="/theme/css/code_blocks/github.css" rel="stylesheet">
+
+
+  <!-- Custom fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+    <link href="/predicting-the-democratic-primary-winner.html" rel="canonical" />
+
+        <meta name="description" content="A Monte Carlo simulation of the final 19 contests">
+
+        <meta name="author" content="Patrick Tyler Haas">
+
+        <meta name="tags" content="politics">
+        <meta name="tags" content="data science">
+        <meta name="tags" content="2016 election">
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Bricks Without Clay"/>
+<meta property="og:title" content="Predicting the Democratic Primary Winner"/>
+<meta property="og:description" content="A Monte Carlo simulation of the final 19 contests"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/predicting-the-democratic-primary-winner.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-04-26 00:00:00-07:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/patrick-tyler-haas.html">
+<meta property="article:section" content="projects"/>
+<meta property="article:tag" content="politics"/>
+<meta property="article:tag" content="data science"/>
+<meta property="article:tag" content="2016 election"/>
+<meta property="og:image" content="/theme/images/post-bg.jpg">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Predicting the Democratic Primary Winner",
+  "headline": "Predicting the Democratic Primary Winner",
+  "datePublished": "2016-04-26 00:00:00-07:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Patrick Tyler Haas",
+    "url": "/author/patrick-tyler-haas.html"
+  },
+  "image": "/theme/images/post-bg.jpg",
+  "url": "/predicting-the-democratic-primary-winner.html",
+  "description": "A Monte Carlo simulation of the final 19 contests"
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+
+              <li role="presentation"><a href="/pages/about.html">About</a></li>
+              <li role="presentation"><a href="/pages/contact.html">Contact</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="/" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">Predicting the Democratic Primary Winner</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="/author/patrick-tyler-haas.html">Patrick Tyler Haas</a>
+            | <time datetime="Tue 26 April 2016">Tue 26 April 2016</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('/theme/images/post-bg.jpg')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <h3>A Monte Carlo simulation of the final 19 contests</h3>
+<p>In a presidential primary season marked by <a href="http://www.nytimes.com/2015/10/16/us/politics/outsider-presidential-candidates-prove-competitive-in-fund-raising.html">outsider
+candidates</a>,
+<a href="http://www.cnn.com/2016/03/03/politics/donald-trump-small-hands-marco-rubio/">bizarre
+theatrics</a>,
+and <a href="https://www.washingtonpost.com/news/post-politics/wp/2016/04/24/cruz-and-kasich-devise-strategy-to-divide-up-three-primary-states/?hpid=hp_hp-top-table-main_pp-cruzkasich-1110pm%3Ahomepage%2Fstory">plot
+twists</a>
+suited for an episode of House of Cards (or better yet Veep), one of the
+most surprising things has been just how predictable the Democratic race
+has been. While few media commentators foresaw Bernie Sanders'
+impressive success this far, the race itself has played out in a
+<a href="https://www.washingtonpost.com/news/the-fix/wp/2016/03/05/the-hillary-clinton-bernie-sanders-race-is-becoming-very-predictable/">largely
+predictable</a>
+manner according to polling and demographic data.</p>
+<p>Upsets like Sanders' near record breaking <a href="http://fivethirtyeight.com/features/what-the-stunning-bernie-sanders-win-in-michigan-means/">performance in
+Michigan</a>
+(where he beat his polling average by more than 20 points) have been
+cause for much hand-wringing by pollsters and celebration by Sanders
+fans. But looking at the race as a whole, as a race for delegates and
+not states, both candidates have performed largely as expected.</p>
+<p>One of the most consistent predictors of the overall race has been
+<a href="http://projects.fivethirtyeight.com/election-2016/delegate-targets/democrats/">FiveThirtyEight's delegate
+tracker</a>.
+This tool, rather than relying on polls (which are spotty or nonexistent
+in many primary and caucus states), <a href="http://fivethirtyeight.com/features/bernie-sanderss-path-to-the-nomination/">creates benchmarks for each
+candidate in each state based on
+demographics</a>.
+To put it simply, FiveThirtyEight created a minimum target for each
+candidate to win a majority of elected delegates by predicting
+best-case-scenarios in each state based on its demographics and past
+voting behavior.</p>
+<p>The reason FiveThirtyEight\'s delegate benchmarks are so notable is
+because they have predicted the overall course of the Democratic primary
+with surprising accuracy. Hillary Clinton has, on average, only
+over-performed her targets by 8 --- 10%, while Sanders has
+under-performed his by the same margin. The consistency of these
+predictions is all the more impressive considering that the targets were
+set back in January and haven't been altered since.</p>
+<p>Based on the strength of this model and it's consistency in the past, we
+can predict a range of likely outcomes in the final 8 weeks of the
+primary season with something called the Monte Carlo method.</p>
+<h3>The Monte Carlo Method</h3>
+<p>The basics of the <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo
+method</a> are simple.
+Imagine you have a series of independent events, whose outcomes are each
+based on a probability distribution. We can create a statistical
+prediction of a string of such events by randomly sampling outcomes,
+based on individual probabilities. In this case the sequence of events
+are a series of primaries. For each upcoming primary we can make a
+prediction about a candidate's performance by making a random "guess" of
+how many delegates s/he will win. After we make a sample prediction for
+each primary we add them up to get a sample delegate total for our trial
+run.</p>
+<p>A single simulated run is not itself predictive, the same way as
+flipping a coin 10 times and getting 8 heads does not indicate that
+outcome is statistically likely. But if we repeat the process over and
+over again, perhaps thousands of times with the help of a computer, a
+pattern should emerge. These outcomes, together, represent a probability
+distribution, from which we can state the general likelihood of a given
+outcome.</p>
+<h3>Simulating the Primary Season</h3>
+<p>Let's start with how the candidates currently stand.</p>
+<p><img alt="Total elected and unelected delegates by candidate: Clinton (1,428/502), Sanders (1,151/38). Figures as of April 25, 2016." src="https://cdn-images-1.medium.com/max/800/1*MWHroyZKIpjA-erjZwoHLw.png"></p>
+<p>In total there are 4,766 delegates who will eventually vote at the
+Democratic Convention. Of these, 4,051 are elected (pledged) delegates
+and 715 are <a href="http://www.vox.com/2016/2/12/10978302/what-are-democratic-superdelegates">unelected (so-called "super")
+delegates</a>.
+2,581 elected delegates have already been assigned in 38 previous state
+and territorial contests, but 1,400 remain to be distributed between now
+and June 14.</p>
+<p>Hillary Clinton is currently leading the Democratic primary in terms of
+both elected and unelected delegates. Sanders' 275 elected delegate
+deficit may seem slight, but it means he has to win at least 59% of the
+elected delegates in the upcoming primaries.</p>
+<p>For this analysis we can factor out the much maligned superdelegates.
+Even though Clinton has amassed 516 of these unbound delegates (versus
+Sanders' 39), these delegates are not technically obliged to vote for
+her and could switch allegiance at any time. We'll just assume that
+these delegates will follow tradition and vote for whoever is leading in
+elected delegates when voting is over. The target for both candidates is
+therefore <strong>2025 elected delegates</strong> (a simple majority of elected
+delegates) after the last contest in Washington D.C. on June 14.</p>
+<p>To set-up our simulation we first assume that each candidate has an
+equal likelihood of either over-performing or under-performing their
+<a href="http://projects.fivethirtyeight.com/election-2016/delegate-targets/democrats/">FiveThirtyEight</a>
+delegate targets. It's important to note that this assumption already
+biases our model slightly in Sanders' favor. So far in the race he has
+actually been more likely to under-perform his targets by about 10
+points. However, with his <a href="http://thehill.com/blogs/ballot-box/presidential-races/277563-national-poll-clintons-lead-narrows">continued rise in national
+polling</a>,
+I'm going to give Bernie the benefit of the doubt.</p>
+<p>The next step is determining how much a candidate will over/under
+perform his or her target and by what probability. To do this I looked
+at all of the primaries thus far and the margin of difference between a
+candidate's delegate target and the actual number of delegates won
+state-by-state (all data available on <a href="https://docs.google.com/spreadsheets/d/1Wi-ciAHhQwPzyXVkd3p6xXkwGBf6FZ732dMWqiZ5AeM/edit?usp=sharing">this Google
+Sheet</a>.)</p>
+<p><img alt="A plot of the frequency distribution of the margin of error between actual results and delegate targets in the primaries so far" src="https://cdn-images-1.medium.com/max/600/1*sZXY6hFwU7MqGQ-2P7zlmQ.png"></p>
+<p>This model is inherently limited because there are only 38 past state
+and territorial results to include in the sample. But using the data at
+hand we can presume that the state-by-state margin of error between
+actual vs. target delegate percentage is a <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal
+distribution</a> with a
+mean of 0.0 and a <a href="https://en.wikipedia.org/wiki/Normal_distribution">standard
+deviation</a> of ±8.33%.</p>
+<p><img alt="A plot of a normal distribution with marked standard deviation (σ). The area under the curve represents how likely a given outcome is. A random sample would have a 34.1% chance of falling between 0 (the mean) and 1 standard deviation. (Source: `Wikipedia \&lt;https://commons.wikimedia.org/wiki/File:Standard_deviation_diagram.svg>`_)" src="https://cdn-images-1.medium.com/max/600/1*-LiQY5kpAeq8UQl_acRprw.png"></p>
+<p>If you don't remember your Statistics 101, that means that there is a
+68.2% chance a random sample will return a delegate target error margin
+less than ±8.33%, a 95% chance of it being less than ±16.66%, and a
+99.7% change of it being less than ±25%.</p>
+<p>The final step is to create a simulation that randomly samples this
+distribution for each upcoming primary state. <a href="https://gist.github.com/haaspt/addaa13bd38feedf55d3f5a793751a06">I did this using
+Python</a>.
+A sample "run" is created by randomly generating delegate wins for each
+candidate in each state and summing all the results to get a final
+delegate total. The simulation is looped to repeat this process for
+thousands of runs.</p>
+<p>For this simulation I forced my computer to live through a <a href="https://en.wikipedia.org/wiki/Groundhog_Day_%28film%29">Groundhog
+Day-esque</a>
+nightmare, repeating each primary between April 26 and June 14 <strong>10,000
+times</strong>.</p>
+<h3>So Who Wins?</h3>
+<p>Sorry, Bernie, it doesn't look good...</p>
+<p>Out of all the trial runs I simulated, <strong>Senator Sanders finished the
+race ahead in elected delegates just 2.9% of the time</strong>. That of course
+means Secretary Clinton finished ahead (either by a little or a lot)
+<strong>97.1% of the time</strong>.</p>
+<p>Here is the distribution of final elected delegate totals:</p>
+<p><img alt="Frequency distribution of each candidate's total elected delegate count for 10,000 simulated primary races. The black dashed line represents the 2,025 delegate threshold needed to win." src="https://cdn-images-1.medium.com/max/1000/1*Z6Ih_iJI2ouML7wACgTuGg.png"></p>
+<p><a href="https://www.yahoo.com/news/bernie-sanders-fight-all-the-way-to-california-172802956.html">California is the key to any potential Sanders
+victory</a>.
+In every simulated race he won he also took the majority of delegates in
+that state. A win in California isn't, however, a necessity for Clinton,
+who won almost 50% of her simulated races without taking that state.</p>
+<p>The Sanders campaign <a href="https://www.washingtonpost.com/blogs/plum-line/wp/2016/04/25/bernie-sanders-knows-hes-going-to-lose-heres-how-you-can-tell/">certainly
+knows</a>
+his path to the nomination is slimmer than ever. Will he press on to the
+convention? Or just until California? Or could a string of losses in the
+northeast deal a mortal blow to his campaign?</p>
+<p>We'll just have to wait and see.</p>
+<p>---</p>
+<p>The Python code used to run this simulation can be found <a href="https://gist.github.com/haaspt/addaa13bd38feedf55d3f5a793751a06">here on my
+Github</a>.
+The results of the Monte Carlo simulations can be viewed or downloaded
+<a href="https://docs.google.com/spreadsheets/d/1Fc5zohSRbEyGlTVLyv3k8swHTy-HS6VcTmiKhi2dAIk/edit?usp=sharing">here on Google
+Sheets</a>.</p>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=Predicting the Democratic Primary Winner&amp;url=/predicting-the-democratic-primary-winner.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=/predicting-the-democratic-primary-winner.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=/predicting-the-democratic-primary-winner.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="/tag/politics.html">politics</a><a href="/tag/data-science.html">data science</a><a href="/tag/2016-election.html">2016 election</a>                </aside>
+
+                <div class="clear"></div>
+
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+
+
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script type="text/javascript" src="/theme/js/script.js"></script>
+
+</body>
+</html>
