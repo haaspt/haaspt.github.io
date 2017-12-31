@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Bricks Without Clay</title><link href="haaspt.github.io/" rel="alternate"></link><link href="haaspt.github.io/feeds/all.atom.xml" rel="self"></link><id>haaspt.github.io/</id><updated>2016-04-26T00:00:00-07:00</updated><entry><title>Predicting the Democratic Primary Winner</title><link href="haaspt.github.io/predicting-the-democratic-primary-winner.html" rel="alternate"></link><published>2016-04-26T00:00:00-07:00</published><updated>2016-04-26T00:00:00-07:00</updated><author><name>Patrick Tyler Haas</name></author><id>tag:None,2016-04-26:haaspt.github.io/predicting-the-democratic-primary-winner.html</id><summary type="html">&lt;p&gt;A Monte Carlo simulation of the final 19 contests&lt;/p&gt;</summary><content type="html">&lt;h3&gt;A Monte Carlo simulation of the final 19 contests&lt;/h3&gt;
+&lt;p&gt;In a presidential primary season marked by &lt;a href="http://www.nytimes.com/2015/10/16/us/politics/outsider-presidential-candidates-prove-competitive-in-fund-raising.html"&gt;outsider
+candidates&lt;/a&gt;,
+&lt;a href="http://www.cnn.com/2016/03/03/politics/donald-trump-small-hands-marco-rubio/"&gt;bizarre
+theatrics&lt;/a&gt;,
+and &lt;a href="https://www.washingtonpost.com/news/post-politics/wp/2016/04/24/cruz-and-kasich-devise-strategy-to-divide-up-three-primary-states/?hpid=hp_hp-top-table-main_pp-cruzkasich-1110pm%3Ahomepage%2Fstory"&gt;plot
+twists&lt;/a&gt;
+suited for an episode of House of Cards (or better yet Veep), one of the
+most surprising things has been just how predictable the Democratic race
+has been. While few media commentators foresaw Bernie Sanders'
+impressive success this far, the race itself has played out in a
+&lt;a href="https://www.washingtonpost.com/news/the-fix/wp/2016/03/05/the-hillary-clinton-bernie-sanders-race-is-becoming-very-predictable/"&gt;largely
+predictable&lt;/a&gt;
+manner according to polling and demographic data.&lt;/p&gt;
+&lt;p&gt;Upsets like Sanders' near record breaking &lt;a href="http://fivethirtyeight.com/features/what-the-stunning-bernie-sanders-win-in-michigan-means/"&gt;performance in
+Michigan&lt;/a&gt;
+(where he beat his polling average by more than 20 points) have been
+cause for much hand-wringing by pollsters and celebration by Sanders
+fans. But looking at the race as a whole, as a race for delegates and
+not states, both candidates have performed largely as expected.&lt;/p&gt;
+&lt;p&gt;One of the most consistent predictors of the overall race has been
+&lt;a href="http://projects.fivethirtyeight.com/election-2016/delegate-targets/democrats/"&gt;FiveThirtyEight's delegate
+tracker&lt;/a&gt;.
+This tool, rather than relying on polls (which are spotty or nonexistent
+in many primary and caucus states), &lt;a href="http://fivethirtyeight.com/features/bernie-sanderss-path-to-the-nomination/"&gt;creates benchmarks for each
+candidate in each state based on
+demographics&lt;/a&gt;.
+To put it simply, FiveThirtyEight created a minimum target for each
+candidate to win a majority of elected delegates by predicting
+best-case-scenarios in each state based on its demographics and past
+voting behavior.&lt;/p&gt;
+&lt;p&gt;The reason FiveThirtyEight\'s delegate benchmarks are so notable is
+because they have predicted the overall course of the Democratic primary
+with surprising accuracy. Hillary Clinton has, on average, only
+over-performed her targets by 8 --- 10%, while Sanders has
+under-performed his by the same margin. The consistency of these
+predictions is all the more impressive considering that the targets were
+set back in January and haven't been altered since.&lt;/p&gt;
+&lt;p&gt;Based on the strength of this model and it's consistency in the past, we
+can predict a range of likely outcomes in the final 8 weeks of the
+primary season with something called the Monte Carlo method.&lt;/p&gt;
+&lt;h3&gt;The Monte Carlo Method&lt;/h3&gt;
+&lt;p&gt;The basics of the &lt;a href="https://en.wikipedia.org/wiki/Monte_Carlo_method"&gt;Monte Carlo
+method&lt;/a&gt; are simple.
+Imagine you have a series of independent events, whose outcomes are each
+based on a probability distribution. We can create a statistical
+prediction of a string of such events by randomly sampling outcomes,
+based on individual probabilities. In this case the sequence of events
+are a series of primaries. For each upcoming primary we can make a
+prediction about a candidate's performance by making a random "guess" of
+how many delegates s/he will win. After we make a sample prediction for
+each primary we add them up to get a sample delegate total for our trial
+run.&lt;/p&gt;
+&lt;p&gt;A single simulated run is not itself predictive, the same way as
+flipping a coin 10 times and getting 8 heads does not indicate that
+outcome is statistically likely. But if we repeat the process over and
+over again, perhaps thousands of times with the help of a computer, a
+pattern should emerge. These outcomes, together, represent a probability
+distribution, from which we can state the general likelihood of a given
+outcome.&lt;/p&gt;
+&lt;h3&gt;Simulating the Primary Season&lt;/h3&gt;
+&lt;p&gt;Let's start with how the candidates currently stand.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Total elected and unelected delegates by candidate: Clinton (1,428/502), Sanders (1,151/38). Figures as of April 25, 2016." src="https://cdn-images-1.medium.com/max/800/1*MWHroyZKIpjA-erjZwoHLw.png"&gt;&lt;/p&gt;
+&lt;p&gt;In total there are 4,766 delegates who will eventually vote at the
+Democratic Convention. Of these, 4,051 are elected (pledged) delegates
+and 715 are &lt;a href="http://www.vox.com/2016/2/12/10978302/what-are-democratic-superdelegates"&gt;unelected (so-called "super")
+delegates&lt;/a&gt;.
+2,581 elected delegates have already been assigned in 38 previous state
+and territorial contests, but 1,400 remain to be distributed between now
+and June 14.&lt;/p&gt;
+&lt;p&gt;Hillary Clinton is currently leading the Democratic primary in terms of
+both elected and unelected delegates. Sanders' 275 elected delegate
+deficit may seem slight, but it means he has to win at least 59% of the
+elected delegates in the upcoming primaries.&lt;/p&gt;
+&lt;p&gt;For this analysis we can factor out the much maligned superdelegates.
+Even though Clinton has amassed 516 of these unbound delegates (versus
+Sanders' 39), these delegates are not technically obliged to vote for
+her and could switch allegiance at any time. We'll just assume that
+these delegates will follow tradition and vote for whoever is leading in
+elected delegates when voting is over. The target for both candidates is
+therefore &lt;strong&gt;2025 elected delegates&lt;/strong&gt; (a simple majority of elected
+delegates) after the last contest in Washington D.C. on June 14.&lt;/p&gt;
+&lt;p&gt;To set-up our simulation we first assume that each candidate has an
+equal likelihood of either over-performing or under-performing their
+&lt;a href="http://projects.fivethirtyeight.com/election-2016/delegate-targets/democrats/"&gt;FiveThirtyEight&lt;/a&gt;
+delegate targets. It's important to note that this assumption already
+biases our model slightly in Sanders' favor. So far in the race he has
+actually been more likely to under-perform his targets by about 10
+points. However, with his &lt;a href="http://thehill.com/blogs/ballot-box/presidential-races/277563-national-poll-clintons-lead-narrows"&gt;continued rise in national
+polling&lt;/a&gt;,
+I'm going to give Bernie the benefit of the doubt.&lt;/p&gt;
+&lt;p&gt;The next step is determining how much a candidate will over/under
+perform his or her target and by what probability. To do this I looked
+at all of the primaries thus far and the margin of difference between a
+candidate's delegate target and the actual number of delegates won
+state-by-state (all data available on &lt;a href="https://docs.google.com/spreadsheets/d/1Wi-ciAHhQwPzyXVkd3p6xXkwGBf6FZ732dMWqiZ5AeM/edit?usp=sharing"&gt;this Google
+Sheet&lt;/a&gt;.)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="A plot of the frequency distribution of the margin of error between actual results and delegate targets in the primaries so far" src="https://cdn-images-1.medium.com/max/600/1*sZXY6hFwU7MqGQ-2P7zlmQ.png"&gt;&lt;/p&gt;
+&lt;p&gt;This model is inherently limited because there are only 38 past state
+and territorial results to include in the sample. But using the data at
+hand we can presume that the state-by-state margin of error between
+actual vs. target delegate percentage is a &lt;a href="https://en.wikipedia.org/wiki/Normal_distribution"&gt;normal
+distribution&lt;/a&gt; with a
+mean of 0.0 and a &lt;a href="https://en.wikipedia.org/wiki/Normal_distribution"&gt;standard
+deviation&lt;/a&gt; of ±8.33%.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="A plot of a normal distribution with marked standard deviation (σ). The area under the curve represents how likely a given outcome is. A random sample would have a 34.1% chance of falling between 0 (the mean) and 1 standard deviation. (Source: `Wikipedia \&amp;lt;https://commons.wikimedia.org/wiki/File:Standard_deviation_diagram.svg&gt;`_)" src="https://cdn-images-1.medium.com/max/600/1*-LiQY5kpAeq8UQl_acRprw.png"&gt;&lt;/p&gt;
+&lt;p&gt;If you don't remember your Statistics 101, that means that there is a
+68.2% chance a random sample will return a delegate target error margin
+less than ±8.33%, a 95% chance of it being less than ±16.66%, and a
+99.7% change of it being less than ±25%.&lt;/p&gt;
+&lt;p&gt;The final step is to create a simulation that randomly samples this
+distribution for each upcoming primary state. &lt;a href="https://gist.github.com/haaspt/addaa13bd38feedf55d3f5a793751a06"&gt;I did this using
+Python&lt;/a&gt;.
+A sample "run" is created by randomly generating delegate wins for each
+candidate in each state and summing all the results to get a final
+delegate total. The simulation is looped to repeat this process for
+thousands of runs.&lt;/p&gt;
+&lt;p&gt;For this simulation I forced my computer to live through a &lt;a href="https://en.wikipedia.org/wiki/Groundhog_Day_%28film%29"&gt;Groundhog
+Day-esque&lt;/a&gt;
+nightmare, repeating each primary between April 26 and June 14 &lt;strong&gt;10,000
+times&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;So Who Wins?&lt;/h3&gt;
+&lt;p&gt;Sorry, Bernie, it doesn't look good...&lt;/p&gt;
+&lt;p&gt;Out of all the trial runs I simulated, &lt;strong&gt;Senator Sanders finished the
+race ahead in elected delegates just 2.9% of the time&lt;/strong&gt;. That of course
+means Secretary Clinton finished ahead (either by a little or a lot)
+&lt;strong&gt;97.1% of the time&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Here is the distribution of final elected delegate totals:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Frequency distribution of each candidate's total elected delegate count for 10,000 simulated primary races. The black dashed line represents the 2,025 delegate threshold needed to win." src="https://cdn-images-1.medium.com/max/1000/1*Z6Ih_iJI2ouML7wACgTuGg.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.yahoo.com/news/bernie-sanders-fight-all-the-way-to-california-172802956.html"&gt;California is the key to any potential Sanders
+victory&lt;/a&gt;.
+In every simulated race he won he also took the majority of delegates in
+that state. A win in California isn't, however, a necessity for Clinton,
+who won almost 50% of her simulated races without taking that state.&lt;/p&gt;
+&lt;p&gt;The Sanders campaign &lt;a href="https://www.washingtonpost.com/blogs/plum-line/wp/2016/04/25/bernie-sanders-knows-hes-going-to-lose-heres-how-you-can-tell/"&gt;certainly
+knows&lt;/a&gt;
+his path to the nomination is slimmer than ever. Will he press on to the
+convention? Or just until California? Or could a string of losses in the
+northeast deal a mortal blow to his campaign?&lt;/p&gt;
+&lt;p&gt;We'll just have to wait and see.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;The Python code used to run this simulation can be found&lt;/em&gt; &lt;a href="https://gist.github.com/haaspt/addaa13bd38feedf55d3f5a793751a06"&gt;&lt;em&gt;here on my
+Github&lt;/em&gt;&lt;/a&gt;.
+&lt;em&gt;The results of the Monte Carlo simulations can be viewed or downloaded&lt;/em&gt;
+&lt;a href="https://docs.google.com/spreadsheets/d/1Fc5zohSRbEyGlTVLyv3k8swHTy-HS6VcTmiKhi2dAIk/edit?usp=sharing"&gt;&lt;em&gt;here on Google
+Sheets&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;</content><category term="politics"></category><category term="data science"></category><category term="2016 election"></category></entry><entry><title>Data Visualization with Python – Data Management and Visualization</title><link href="haaspt.github.io/data-visualization-with-python.html" rel="alternate"></link><published>2016-03-21T00:00:00-07:00</published><updated>2016-03-21T00:00:00-07:00</updated><author><name>Patrick Tyler Haas</name></author><id>tag:None,2016-03-21:haaspt.github.io/data-visualization-with-python.html</id><summary type="html">&lt;p&gt;Data Management and Visualization — Week 4&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="" src="https://cdn-images-1.medium.com/max/2000/1*NjvjTHjXcA7O4_0YMTkiMA.png"&gt;&lt;/p&gt;
+&lt;h3&gt;Data Visualization with Python&lt;/h3&gt;
+&lt;h4&gt;&lt;a href="https://www.coursera.org/learn/data-visualization/"&gt;Data Management and Visualization&lt;/a&gt; — Week 4&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;This is the fourth in a&lt;/em&gt; &lt;a href="https://medium.com/bricks-without-clay"&gt;&lt;em&gt;series of
+posts&lt;/em&gt;&lt;/a&gt; &lt;em&gt;I’m writing as part o&lt;/em&gt;f
+&lt;em&gt;Wesleyan University’s online&lt;/em&gt; &lt;a href="https://www.coursera.org/learn/data-visualization/"&gt;&lt;em&gt;Data Management and
+Visualization&lt;/em&gt;&lt;/a&gt;
+&lt;em&gt;course.&lt;/em&gt;&lt;/p&gt;
+&lt;h4&gt;Overview&lt;/h4&gt;
+&lt;p&gt;This week we finally get to the visualization portion of our Data
+Management and Visualization series. Now that we’ve learned to &lt;a href="https://medium.com/bricks-without-clay/basic-data-parsing-with-python-a1a0a6c441b6#.s2q6hgxfa"&gt;load,
+summarize&lt;/a&gt;,
+&lt;a href="https://medium.com/bricks-without-clay/more-data-parsing-with-python-1847aee19501#.ei1iab5hl"&gt;sort, cut, and slice our
+data&lt;/a&gt;,
+let’s take a look at how we can visualize it.&lt;/p&gt;
+&lt;p&gt;Visualization is a powerful tool, both for presenting our findings to
+others, as well as for our own analysis. Things like spread, variance,
+and modality can all be quickly gleaned from a good visualization.&lt;/p&gt;
+&lt;p&gt;Here’s an example using the same &lt;a href="https://d396qusza40orc.cloudfront.net/phoenixassets/data-management-visualization/OutlookOnLife%20Codebook.pdf"&gt;Outlook on
+Life&lt;/a&gt;
+data from &lt;a href="https://medium.com/bricks-without-clay"&gt;my previous posts&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Fig. 1: Count of respondents’ age group,
+by gender" src="https://cdn-images-1.medium.com/max/800/1*dV-MLfONJg9D73j9f5Yiww.png"&gt;&lt;/p&gt;
+&lt;p&gt;This graph shows us the breakdown of age groups of the people who
+responded to this study, grouped by gender. At a glance it’s clear that
+both genders have a very similar distribution. They are both unimodal
+(they have a single peak, in the 55–65 age range), and skew to the left
+(i.e. towards younger respondents.)&lt;/p&gt;
+&lt;h4&gt;Visualizing Politics, Anger, and Optimism&lt;/h4&gt;
+&lt;p&gt;Before I begin, I want to discuss the type of data I’m working with and
+how it affects visualization.&lt;/p&gt;
+&lt;p&gt;The 2012 Outlook on Life survey consists almost entirely of
+&lt;em&gt;categorical&lt;/em&gt; data. &lt;a href="https://en.wikipedia.org/wiki/Categorical_variable"&gt;Categorical
+data&lt;/a&gt; is comprised
+of variables with a fixed number of possible values, like the answers to
+a multiple choice questionnaire. Compared to quantitative data,
+categorical data is more limited in the ways it can be described, and,
+by extension, visualized. Categorical data can’t, for example, produce
+scatter plots, regression lines, etc.&lt;/p&gt;
+&lt;p&gt;To refresh your memory, here’s the Python code that I use to load and
+clean my data (for more detail, see last week’s post):&lt;/p&gt;
+&lt;p&gt;First, I will create a single variable bar graph to see a distribution
+of how optimistic participants said they felt about the future. Using
+Python and the (amazing) module
+&lt;a href="https://stanford.edu/~mwaskom/software/seaborn/"&gt;Seaborn,&lt;/a&gt; we execute
+the following lines of code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;factorplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hope&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kind&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;count&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Level of Optimism&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Count&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;How optimistic are you about your future&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Which produces this simple graph:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Fig. 2: Count
+of optimism" src="https://cdn-images-1.medium.com/max/600/1*oHvsPQkpEH0v63qUMnrwnQ.png"&gt;&lt;/p&gt;
+&lt;p&gt;This plot gives us a good idea of responses to the question of “When you
+think about your future, are you generally optimistic, pessimistic, or
+neither optimistic nor pessimistic?” Obviously, the majority of
+participants are optimistic about their future. Only a very small
+portion of respondents said they were pessimistic.&lt;/p&gt;
+&lt;p&gt;The problem is this visualization is so &lt;em&gt;flat&lt;/em&gt;. We’re only really
+looking at one variable, along with its count. As I mentioned,
+categorical data is somewhat limited in how it can be visualized, but
+with Seaborn, we can definitely add some extra dimensionality to this
+plot.&lt;/p&gt;
+&lt;p&gt;I’ll run the same code as before, but this time add a new parameter
+‘hue’.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;factorplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hope&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;hue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;poli&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kind&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;count&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Which transforms the previous figure into this:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Fig. 3: Levels of optimism by political
+orientation" src="https://cdn-images-1.medium.com/max/600/1*K-QSKo1no2Rbo_4MaDuREg.png"&gt;&lt;/p&gt;
+&lt;p&gt;Great! Now we can simultaneously see levels of optimism &lt;em&gt;and&lt;/em&gt; political
+orientation (in the form of the coloring of the bars) at the same time.
+By adding the hue parameter, we can now look at two variables at once.&lt;/p&gt;
+&lt;p&gt;This chart largely tells the same story as the previous. Each political
+orientation have the same shape and skew as fig. 2. But we can make some
+new observations. For example, we can see that in comparison to the
+other orientations, Democrats tend to have a low level of pessimism. The
+number of Independents who said they are optimistic is very close to the
+number who said they were neither optimistic nor pessimistic, a trend
+not seen with the Democrats or Republicans in the study.&lt;/p&gt;
+&lt;p&gt;We can add one more dimension to our analysis by splitting the graph
+into two subplots, as in fig. 1, using this
+code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;factorplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hope&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;hue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;poli&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;gender&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kind&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;count&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This produces:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Fig. 4: Level of optimism by political orientation
+and gender" src="https://cdn-images-1.medium.com/max/800/1*V2xgW1Tkw6AMlByRxg38yA.png"&gt;&lt;/p&gt;
+&lt;p&gt;In this plot the overall trend is again the same, but we can still
+notice some interesting differences, like the relatively high level of
+pessimism among male Independents.&lt;/p&gt;
+&lt;p&gt;For the data I’m using, lacking quantitative variables, I’m mostly stuck
+with bar graphs, which gets boring quickly. Fortunately I do have one
+quantitative variable I can use: age.&lt;/p&gt;
+&lt;p&gt;Let’s say we want to see a breakdown of respondents by age, political
+orientation, and race. We can visualize that using a swarm plot:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;swarmplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;poli&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;age&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;hue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ethn&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The result is pretty striking:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Fig. 5: Swarm plot of political orientation by age, with ethnicity
+as hue" src="https://cdn-images-1.medium.com/max/1000/1*YiksuiItx-qTLz25fRYGOg.png"&gt;&lt;/p&gt;
+&lt;p&gt;Here are some of the variables we can readily glean from this graph:
+distribution of ages by political orientation, total count of
+respondents by political orientation, distribution of races by political
+orientation, distribution of races by age, and total count of
+respondents’ races. That’s a lot of data for a single graph.&lt;/p&gt;
+&lt;p&gt;This graph shows that the age distributions for Republicans and
+Independents are uniformly distributed. However, it’s multi-modal for
+democrats, with peaks in the mid 20s, from 50 to 70, and large
+concentration at 81.&lt;/p&gt;
+&lt;p&gt;It’s also clear that, in this survey sample, Republican respondents are
+almost exclusively white, while African Americans make up the majority
+of Democratic respondents. Overall Independents are a more varied group.&lt;/p&gt;
+&lt;h4&gt;Conclusions&lt;/h4&gt;
+&lt;p&gt;This has obviously been neither a comprehensive overview of Seaborn, nor
+have I visualized all of the possible combinations of variables in my
+dataset. Rather, what I wanted to show was the power and elegance of
+Seaborn, even when working with limiting categorical data. To see
+additional ways Seaborn can visualize categorical data, make sure to see
+&lt;a href="https://stanford.edu/~mwaskom/software/seaborn/tutorial/categorical.html"&gt;their fantastic
+documentation.&lt;/a&gt;&lt;/p&gt;</content><category term="politics"></category><category term="data science"></category></entry><entry><title>More Data Parsing with Python – Data Management and Visualization</title><link href="haaspt.github.io/more-data-parsing-with-python.html" rel="alternate"></link><published>2016-03-13T00:00:00-08:00</published><updated>2016-03-13T00:00:00-08:00</updated><author><name>Patrick Tyler Haas</name></author><id>tag:None,2016-03-13:haaspt.github.io/more-data-parsing-with-python.html</id><summary type="html">&lt;p&gt;Data Management and Visualization — Week 3&lt;/p&gt;</summary><content type="html">&lt;h3&gt;More Data Parsing with Python&lt;/h3&gt;
+&lt;h4&gt;&lt;a href="https://www.coursera.org/learn/data-visualization/"&gt;Data Management and Visualization&lt;/a&gt; — Week 3&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;This is the third in a&lt;/em&gt; &lt;a href="https://medium.com/bricks-without-clay"&gt;&lt;em&gt;series of
+posts&lt;/em&gt;&lt;/a&gt; &lt;em&gt;I’m writing as part o&lt;/em&gt;f
+&lt;em&gt;Wesleyan University’s online&lt;/em&gt; &lt;a href="https://www.coursera.org/learn/data-visualization/"&gt;&lt;em&gt;Data Management and
+Visualization&lt;/em&gt;&lt;/a&gt;
+&lt;em&gt;course.&lt;/em&gt;&lt;/p&gt;
+&lt;h4&gt;Overview&lt;/h4&gt;
+&lt;p&gt;This week’s post will mainly serve as an addendum to &lt;a href="https://medium.com/bricks-without-clay/basic-data-parsing-with-python-a1a0a6c441b6#.keups3t13"&gt;last
+week’s&lt;/a&gt;
+where I showed how to load data into Python and do some basic
+manipulation using Pandas. This week I’ll demonstrate how to do the
+following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Drop invalid responses from our data&lt;/li&gt;
+&lt;li&gt;Rename/recode variables in our data&lt;/li&gt;
+&lt;li&gt;Group our data into “bins” that will simplify interpretation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To briefly recap my project, I am looking at data from a 2012 survey
+that asked participants about their outlook on life and trying to
+determine how political opinions and demographics correlate with
+respondents’ overall level of optimism.&lt;/p&gt;
+&lt;h4&gt;Invalid Responses&lt;/h4&gt;
+&lt;p&gt;We’re fortunate that the Outlook on Life survey team already did much of
+the legwork in coding for us. Any invalid or missing responses to
+questions have been coded as ‘-1’ in the dataset.&lt;/p&gt;
+&lt;p&gt;In addition to these invalid responses, some questions have responses
+that we can consider invalid &lt;em&gt;for our purposes&lt;/em&gt;. For example, when asked
+about how they identified politically, respondents had the option to
+answer ‘Republican’, ‘Democrat’, ‘Independent’, as well as ‘something
+else’. These ‘other’ responses have no real meaning for our analysis and
+we can code them out as well.&lt;/p&gt;
+&lt;p&gt;Pandas has its own standard for handling invalid data: NaN. This value,
+which stands for ‘Not a Number’, serves as a placeholder for blank data
+and by default Pandas will tend to ignore it when performing operations.&lt;/p&gt;
+&lt;p&gt;This snippet demonstrates how I coded out invalid data for the variables
+I’m using:&lt;/p&gt;
+&lt;p&gt;We can check if our code has worked by printing the following statement:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;W1_C1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value_counts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dropna&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="n"&gt;NaN&lt;/span&gt; &lt;span class="mi"&gt;157&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;331&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;1251&lt;/span&gt;
+&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="mi"&gt;555&lt;/span&gt;
+&lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;W1_C1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;int64&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Notice that there are no longer summaries for ‘4’ or ‘-1’. Instead we
+have grouped both of these response types into NaN, which can be ignored
+in future analysis.&lt;/p&gt;
+&lt;h4&gt;Recoding Responses&lt;/h4&gt;
+&lt;p&gt;You may have noticed that our dataset uses special coding for both
+column names and responses. Columns are given names like W1_F1, while
+categorical responses (like what ethnicity are you) are coded as
+numbers. This makes a lot of sense when your organizing a large dataset,
+but can make it cumbersome to remember what each variable actually
+means.&lt;/p&gt;
+&lt;p&gt;To make our lives a little easier let’s rename our columns in a way that
+we can more easily remember what kind of information they hold. We can
+do this by simply passing a list of values to the object ‘data.columns’:&lt;/p&gt;
+&lt;p&gt;Simple enough! Now if we want to access the column with respondents’
+ages, we can just call ‘data.age’.&lt;/p&gt;
+&lt;p&gt;Right now if I summarize the ‘gender’ column we would see two responses:
+1 and 2. This is fine as long as I have my codebook handy to tell me
+that 1=Male and 2=Female, but what if I decide that’s a bit too
+cumbersome to deal with? In that case we can have Pandas recode these
+numerical values with corresponding string values:&lt;/p&gt;
+&lt;p&gt;Now our frequency count for gender is much more readable:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gender&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value_counts&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="n"&gt;Female&lt;/span&gt; &lt;span class="mi"&gt;1262&lt;/span&gt;
+&lt;span class="n"&gt;Male&lt;/span&gt; &lt;span class="mi"&gt;1032&lt;/span&gt;
+&lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;gender&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;int64&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;While we &lt;em&gt;could&lt;/em&gt; recode all of our categorical data, we would sacrifice
+ease of use for intelligibility. It’s a lot easier to write code dealing
+with numerical values than long strings like ‘not very angry’.&lt;/p&gt;
+&lt;h4&gt;Grouping Data&lt;/h4&gt;
+&lt;p&gt;The last thing I’ll cover this week is how to group numerical data into
+convenient bins.&lt;/p&gt;
+&lt;p&gt;Last week I mentioned that I couldn’t display the frequency table for my
+‘age’ column, because there were too many unique values to fit on one
+screen. Participants in the Outlook on Life survey ranged in age from 18
+to 81, and there are over 60 unique responses recorded to this question.
+Fortunately, Pandas makes it easy to group data into user defined bins.&lt;/p&gt;
+&lt;p&gt;Since we’re dealing with age data the obvious solution is to group them
+into age ranges. I don’t want to get too granular with my data, so let’s
+just use intervals of 20. Using the following code, I’ll tell Pandas to
+create a new column, ‘age_group’, and group my age data into the
+following ranges: 18–25, 25–45, 45–65, 65–85.&lt;/p&gt;
+&lt;p&gt;Now we can get a concise summary of our survey group by age ranges:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;age_group&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value_counts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="mi"&gt;240&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;45&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="mi"&gt;644&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;45&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;65&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="mi"&gt;991&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;65&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;85&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="mi"&gt;383&lt;/span&gt;
+&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;int64&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can now see that our survey sample skews fairly old, with roughly 60%
+of respondents being over 45 years-old. This shows you how powerful and
+convenient bins can be.&lt;/p&gt;
+&lt;p&gt;At this point we have a good handle of our data. We’ve loaded it into
+Python, coded out responses we don’t need, learned to replace and rename
+values, grouped it into handy bins, and learned how to quickly summarize
+variables. With all that at our disposal, we’re ready to create
+visualizations of our data.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Next week’s post will cover data visualization using Python.&lt;/em&gt;&lt;/p&gt;</content><category term="politics"></category><category term="data science"></category></entry><entry><title>Basic Data Parsing with Python – Data Management and Visualization</title><link href="haaspt.github.io/basic-data-parsing-with-python.html" rel="alternate"></link><published>2016-03-06T00:00:00-08:00</published><updated>2016-03-06T00:00:00-08:00</updated><author><name>Patrick Tyler Haas</name></author><id>tag:None,2016-03-06:haaspt.github.io/basic-data-parsing-with-python.html</id><summary type="html">&lt;p&gt;Data Management and Visualization — Week 2&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Basic Data Parsing with Python&lt;/h3&gt;
+&lt;h4&gt;&lt;a href="https://www.coursera.org/learn/data-visualization/"&gt;Data Management and Visualization&lt;/a&gt; — Week 2&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;This is the second in a&lt;/em&gt; &lt;a href="https://medium.com/bricks-without-clay"&gt;&lt;em&gt;series of
+posts&lt;/em&gt;&lt;/a&gt; &lt;em&gt;I’m writing as part o&lt;/em&gt;f
+&lt;em&gt;Wesleyan University’s online&lt;/em&gt; &lt;a href="https://www.coursera.org/learn/data-visualization/"&gt;&lt;em&gt;Data Management and
+Visualization&lt;/em&gt;&lt;/a&gt;
+&lt;em&gt;course.&lt;/em&gt;&lt;/p&gt;
+&lt;h4&gt;Overview&lt;/h4&gt;
+&lt;p&gt;This week we’re covering basic data loading and summarization using
+either SAS or Python. I’ve decided to use Python because it’s the tool
+I’m more familiar with and I feel it has much more flexibility and
+scope.&lt;/p&gt;
+&lt;p&gt;I’ve been using Python for about a year now for a range of applications.
+Initially I mainly wrote &lt;a href="https://github.com/haaspt/csv2kml"&gt;scripts&lt;/a&gt;
+and &lt;a href="https://github.com/haaspt/whatsnew"&gt;simple CLI programs&lt;/a&gt;, but
+recently I’ve started using it in my day-to-day work for interactive
+data manipulation.&lt;/p&gt;
+&lt;p&gt;When it comes to working with data in Python, there is no better tool
+than &lt;a href="http://pandas.pydata.org/"&gt;Pandas&lt;/a&gt;. For the uninitiated, Pandas is
+a data analysis library that provides a huge selection of data
+manipulation tools that are both powerful and (relatively) user
+friendly. If you’re new to programming or data analysis think of Pandas
+as giving you the ability to work with data the way you would in Excel.
+You’re just trading the convenience of a graphical user interface for
+the power and flexibility that comes with Python.&lt;/p&gt;
+&lt;p&gt;This week I’ll demonstrate loading the &lt;a href="https://medium.com/bricks-without-clay/demographics-politics-and-optimism-6376243e4bc#.y9jq5x26r"&gt;data I discussed last
+week&lt;/a&gt;
+from a CSV file into a Pandas dataframe using Python and Pandas. Then
+I’ll extract some of the variables related to demographics and outlook
+and run some frequency analyses to get a quick look at what we’re
+dealing with.&lt;/p&gt;
+&lt;h4&gt;Loading Data&lt;/h4&gt;
+&lt;p&gt;Dataframes are the core of the Pandas library. From a user point of view
+you can think of a Pandas dataframe as basically the same as an Excel
+spreadsheet. It has labeled columns, which contain various forms of
+data, which are numerically indexed by row.&lt;/p&gt;
+&lt;p&gt;Loading data from a CSV or Excel spreadsheet into a Pandas dataframe is
+extremely simple. We simply run this code:&lt;/p&gt;
+&lt;p&gt;And that’s it! We now have a dataframe with all of our survey data
+inside.&lt;/p&gt;
+&lt;p&gt;Before we start working with our data we might want to get a sense of
+how many columns and rows we’re working with. To do that we can simply
+use the ‘shape’ command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2294&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;436&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This output tells us that our data has 2294 rows and 436 columns. This
+corresponds to our 2294 survey respondents and the 436 questions that
+were included in the survey.&lt;/p&gt;
+&lt;p&gt;Our data is too big to view all at once. If you want to get a quick peak
+you can run the following command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That will display only the first row of data in each column of our
+frame. Unfortunately the data we’re working with is 436 columns wide, so
+the output will still get truncated. But this is still useful for
+getting a sense of what you’re working with.&lt;/p&gt;
+&lt;p&gt;Now that we’ve got our data loaded, let’s summarize some of the
+variables that we’ll be using in our later analyses.&lt;/p&gt;
+&lt;h4&gt;Accessing and Summarizing Columns&lt;/h4&gt;
+&lt;p&gt;Last week I said I would be looking at three types of variables in order
+to gain some insight into how demographics and political orientation
+affect our outlook on the future. Broadly they were:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Respondents’ political orientation&lt;/li&gt;
+&lt;li&gt;Respondents’ demographic data (primarily ethnicity and age)&lt;/li&gt;
+&lt;li&gt;Respondents’ views on their future and the future of the country&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;With over 400 survey questions asked, there are a lot of ways (both
+directly and indirectly) to approach these questions, but let’s just
+start with the questions that most directly relate.&lt;/p&gt;
+&lt;p&gt;Here is a list of the questions we will be using, grouped according to
+the categories I listed above. The first item lists the variable name,
+which we’ll use when accessing our dataframe, followed by the text of
+the
+question.&lt;/p&gt;
+&lt;p&gt;`&lt;/p&gt;
+&lt;h1&gt;Political Orientation&lt;/h1&gt;
+&lt;p&gt;`&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;W1_C1: Generally speaking, do you usually think of yourself as a Democrat, a Republican, an Independent, or something else?&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;`&lt;/p&gt;
+&lt;h1&gt;Demographic Information&lt;/h1&gt;
+&lt;p&gt;`&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;PPAGE: The respondent's age
+PPETHM: The respondent's self-described ethnicity
+PPGENDER: The respondent's gender&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;`&lt;/p&gt;
+&lt;h1&gt;Views on the future&lt;/h1&gt;
+&lt;p&gt;`&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;W1_B4:Generally speaking, how angry do you feel about the way things are going in the country these days?
+W1_F1: When you think about your future, are you generally optimistic, pessimistic, or neither optimistic nor pessimistic?&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Great, now that we have that data, let’s create a new dataframe
+containing only these columns:&lt;/p&gt;
+&lt;p&gt;All we need to do now is start summarizing our data. There are &lt;em&gt;many&lt;/em&gt;
+ways to do this with Pandas, but for this lesson we’ll be using the
+value_counts() function. value_counts will give us either the raw
+count of each response by category, or the response as a proportion of
+the total responses.&lt;/p&gt;
+&lt;p&gt;Note that if you’re running this code interactively in iPython you don’t
+need to set these to variables, you can just execute the code and it
+will display the output immediately.&lt;/p&gt;
+&lt;p&gt;Now that we have all our counts and frequency tables stored to variables
+we just need to display them. If you’re using Python interactively (i.e.
+using iPython or similar) you can do this by just typing the variable
+name. Otherwise, you’ll have to use the print function to output the
+table.&lt;/p&gt;
+&lt;p&gt;Here are our tables:&lt;/p&gt;
+&lt;p&gt;Note that I didn’t include the age variable in the above table. That’s
+because with each person giving his or her exact age we have over 60
+different responses. That makes for a messy summarization table. In next
+week’s entry I’ll go over the group_by() function as well as the use of
+bins, which help us group data in ways that make it easier to work with.&lt;/p&gt;
+&lt;h4&gt;Review&lt;/h4&gt;
+&lt;p&gt;With just a few commands you can see that we’re already well on our way
+to a better understanding of our data. For example, it’s clear that we
+have a very optimistic group of respondents, with over 50% saying they
+were optimistic about their own future. We also know that over 75% said
+they were angry on some level about the direction the country was going
+in.&lt;/p&gt;
+&lt;p&gt;This is really just the tip of the iceberg when it comes to Pandas
+functionality. Each of the functions I used today can be tweaked using
+optional arguments and settings to behave exactly how you want. There
+are far too many to cover in this course, but if you’re interested I
+suggest browsing through the &lt;a href="http://pandas.pydata.org/pandas-docs/stable/"&gt;Pandas
+documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Likewise, our analysis is only getting started. We’ve learned how to get
+a quick snapshot of the responses for a given question, but that doesn’t
+really tell us all that much. To do that we need group the data in order
+to say “X% of people who believe Y also think that Z.”&lt;/p&gt;
+&lt;p&gt;To accomplish that, we’ll need to learn how to use Pandas functions like
+the groupby(), to add a new dimension to our analysis.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;a href="https://medium.com/bricks-without-clay/more-data-parsing-with-python-1847aee19501#.nh7t5zkp3"&gt;&lt;em&gt;Next week’s
+post&lt;/em&gt;&lt;/a&gt;
+&lt;em&gt;covers cleaning, managing, and further analyzing our data in Python.&lt;/em&gt;&lt;/p&gt;</content><category term="politics"></category><category term="data science"></category></entry><entry><title>Demographics, Politics, and Optimism – Data Management and Visualization</title><link href="haaspt.github.io/demographics-politics-and-optimism.html" rel="alternate"></link><published>2016-02-27T00:00:00-08:00</published><updated>2016-02-27T00:00:00-08:00</updated><author><name>Patrick Tyler Haas</name></author><id>tag:None,2016-02-27:haaspt.github.io/demographics-politics-and-optimism.html</id><summary type="html">&lt;p&gt;Data Management and Visualization — Week 1&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Demographics, Politics, and Optimism&lt;/h3&gt;
+&lt;h4&gt;&lt;a href="https://www.coursera.org/learn/data-visualization/"&gt;Data Management and Visualization&lt;/a&gt; — Week 1&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;This is the first in a series of posts I’m writing as part o&lt;/em&gt;f
+&lt;em&gt;Wesleyan University’s online&lt;/em&gt; &lt;a href="https://www.coursera.org/learn/data-visualization/"&gt;&lt;em&gt;Data Management and
+Visualization&lt;/em&gt;&lt;/a&gt;
+&lt;em&gt;course.&lt;/em&gt;&lt;/p&gt;
+&lt;h4&gt;Overview&lt;/h4&gt;
+&lt;p&gt;For this course’s first assignment I decided to take a close look at the
+data from the 2012 “&lt;a href="https://d396qusza40orc.cloudfront.net/phoenixassets/data-management-visualization/OutlookOnLife%20Codebook.pdf"&gt;Outlook on Life
+Surveys&lt;/a&gt;”,
+published by the Inter-University Consortium for Political and Social
+Research, and conducted by GfK Knowledge Networks.&lt;/p&gt;
+&lt;p&gt;The survey collected responses from 2,294 respondents on questions
+related to their biographical details, social and political views, as
+well as their general thoughts on life and the future. Respondents
+provided answers to more than 400 questions.&lt;/p&gt;
+&lt;p&gt;The end result is a rich data set for investigating any number of
+socio-political questions.&lt;/p&gt;
+&lt;h4&gt;Research Focus&lt;/h4&gt;
+&lt;p&gt;This being an election year, I couldn’t resist the urge to investigate a
+deeply political question: how closely does a person’s views on the
+country’s future correlate to their political orientation?&lt;/p&gt;
+&lt;p&gt;Are self-identified liberals more optimistic about continued future
+progress, or do they feel we’re on the wrong track and need deep reform?
+Do conservatives see an America in decline, or a country bound for
+greatness?&lt;/p&gt;
+&lt;p&gt;Based on casual observation in my personal life, as well as from
+following the news, I think that we’ll find a tendency for
+self-identified liberals and those with progressive ideologies to be
+generally more optimistic about the future (both their own and of the
+country as a whole). The affect is likely even more pronounced in this
+study because it was conducted in the months leading up to the 2012
+presidential election, in which Republicans unsuccessfully attempted to
+prevent Barack Obama from winning a second term in the White House.&lt;/p&gt;
+&lt;p&gt;After I answer this question I plan to introduce further variables
+related to the respondents’ demographic information, including gender,
+ethnicity, and age. This will show us if outlook shifts significantly
+among different demographic groups.&lt;/p&gt;
+&lt;h4&gt;Literature Review&lt;/h4&gt;
+&lt;p&gt;While reviewing literature on this subject by both academics and
+political thinkers, I found it divided into two major lines of
+investigation. The first consists of studies based on surveys reporting
+&lt;em&gt;happiness&lt;/em&gt; by political party (rather than outlook on the future). And
+the other mainly consists of psychological studies arguing whether
+deep-seated “fight-or-flight”-type responses affect everyday political
+identities.&lt;/p&gt;
+&lt;p&gt;Articles discussing political affiliation and happiness are easy to come
+by and are surprisingly consistent in their conclusions: across the
+board Republicans report being happier than Democrats. A 2006 article by
+the &lt;a href="http://www.pewsocialtrends.org/2006/02/13/are-we-happy-yet/"&gt;Pew Research
+Center&lt;/a&gt;
+found that 45% of Republicans said they were “very happy” versus just
+30% of Democrats.&lt;/p&gt;
+&lt;p&gt;Curious to see if this trend was consistent over time I grabbed some
+data from the &lt;a href="http://gss.norc.org/"&gt;General Social Survey&lt;/a&gt; and it turns
+out that yes, for over 40 years Democrats have on average trailed
+Republicans by a consistent margin in self-reported happiness.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="A chart I created using data from the GSS. Respondents were asked to
+rate their happiness from 0 meaning “not too happy” to 2 meaning
+“very happy.”" src="https://cdn-images-1.medium.com/max/1000/1*1z3bmVjydBChTcH9BMIJ2g.png"&gt;&lt;/p&gt;
+&lt;p&gt;Arthur Brooks, President of the conservative think tank the American
+Enterprise Institute, coincidentally &lt;a href="http://freakonomics.com/2008/04/23/conservatives-are-happier-than-liberals-discuss/"&gt;used this same exact
+data&lt;/a&gt;
+to tease people like me who, perhaps naïvely, assume that liberals are
+the naturally happy sort.&lt;/p&gt;
+&lt;p&gt;Digging deeper into this line of research on the academic side, Jaime
+Napier and John Jost, in a study titled “&lt;a href="https://scholar.google.com/citations?view_op=view_citation&amp;amp;hl=en&amp;amp;user=w0SkCAIAAAAJ&amp;amp;citation_for_view=w0SkCAIAAAAJ:d1gkVwhDpl0C"&gt;Why are conservatives happier
+than
+liberals?&lt;/a&gt;”,
+posit that the happiness gap is in part due to rising wealth inequality.
+Their research finds that the ability to rationalize and insulate
+oneself from that inequality plays a crucial role in conservatives’
+ability to maintain higher average happiness.&lt;/p&gt;
+&lt;p&gt;If Napier and Jost are correct then we should expect to see those
+effects at play in our question. While they focused on happiness, rather
+than on subjects’ outlook on the future, it would follow that
+conservatives’ ability to better rationalize socio-economic ills would
+leave them with a better outlook on their future as well as that of the
+country.&lt;/p&gt;
+&lt;p&gt;But it’s not quite that simple.&lt;/p&gt;
+&lt;p&gt;If we turn to psychological research we find another consistent trend:
+conservative political leanings correlate strongly to a higher than
+average aversion to uncertainty. Put simply, conservatives have a
+stronger fight-or-flight reflex than their liberal counterparts.&lt;/p&gt;
+&lt;p&gt;A &lt;a href="https://scholar.google.com/citations?view_op=view_citation&amp;amp;hl=en&amp;amp;user=w0SkCAIAAAAJ&amp;amp;citation_for_view=w0SkCAIAAAAJ:u5HHmVD_uO8C"&gt;study in the &lt;em&gt;Personality and Social Psychology
+Bulletin&lt;/em&gt;&lt;/a&gt;
+** found that “avoidance of uncertainty” and “threat management” both
+contribute independently to conservative political beliefs.&lt;/p&gt;
+&lt;p&gt;These findings aren’t unique. Recent articles in
+&lt;a href="http://science.sciencemag.org/content/321/5896/1667.short"&gt;&lt;em&gt;Science&lt;/em&gt;&lt;/a&gt;
+and &lt;a href="http://journals.cambridge.org/action/displayAbstract?fromPage=online&amp;amp;aid=9292100"&gt;&lt;em&gt;Behavioral and Brain
+Sciences&lt;/em&gt;&lt;/a&gt;
+** cite a growing body of research strongly linking conservatives with
+greater psychological responses to the unknown. Together they advance
+the notion that political ideologies may be more deeply rooted in our
+physiology than we have traditionally assumed.&lt;/p&gt;
+&lt;p&gt;This second line of research may be significant for the research I am
+planning because the question we’re looking at not only considers
+current happiness, but also people’s responses to future unknowns. These
+factors may come into play with our analysis.&lt;/p&gt;
+&lt;p&gt;We’ll see what the data has to say.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;a href="https://medium.com/bricks-without-clay/basic-data-parsing-with-python-a1a0a6c441b6#.7eu5g3x6a"&gt;&lt;em&gt;Next week’s
+post&lt;/em&gt;&lt;/a&gt;
+&lt;em&gt;covers making a simple Python script I’ll be writing to start analyzing
+my data.&lt;/em&gt;&lt;/p&gt;</content><category term="politics"></category><category term="data science"></category></entry></feed>

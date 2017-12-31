@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Data Visualization with Python – Data Management and Visualization</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+  <link href="haaspt.github.io/" rel="canonical" />
+
+  <!-- Feed -->
+        <link href="haaspt.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Bricks Without Clay Full Atom Feed" />
+          <link href="haaspt.github.io/feeds/projects.atom.xml" type="application/atom+xml" rel="alternate" title="Bricks Without Clay Categories Atom Feed" />
+
+  <link href="haaspt.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+  <!-- Code highlight color scheme -->
+      <link href="haaspt.github.io/theme/css/code_blocks/github.css" rel="stylesheet">
+
+
+  <!-- Custom fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+    <link href="haaspt.github.io/data-visualization-with-python.html" rel="canonical" />
+
+        <meta name="description" content="Data Management and Visualization — Week 4">
+
+        <meta name="author" content="Patrick Tyler Haas">
+
+        <meta name="tags" content="politics">
+        <meta name="tags" content="data science">
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Bricks Without Clay"/>
+<meta property="og:title" content="Data Visualization with Python – Data Management and Visualization"/>
+<meta property="og:description" content="Data Management and Visualization — Week 4"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="haaspt.github.io/data-visualization-with-python.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-03-21 00:00:00-07:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="haaspt.github.io/author/patrick-tyler-haas.html">
+<meta property="article:section" content="projects"/>
+<meta property="article:tag" content="politics"/>
+<meta property="article:tag" content="data science"/>
+<meta property="og:image" content="haaspt.github.io/theme/images/post-bg.jpg">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Data Visualization with Python – Data Management and Visualization",
+  "headline": "Data Visualization with Python – Data Management and Visualization",
+  "datePublished": "2016-03-21 00:00:00-07:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Patrick Tyler Haas",
+    "url": "haaspt.github.io/author/patrick-tyler-haas.html"
+  },
+  "image": "haaspt.github.io/theme/images/post-bg.jpg",
+  "url": "haaspt.github.io/data-visualization-with-python.html",
+  "description": "Data Management and Visualization — Week 4"
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+
+              <li role="presentation"><a href="haaspt.github.io/pages/about.html">About</a></li>
+              <li role="presentation"><a href="haaspt.github.io/pages/contact.html">Contact</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="haaspt.github.io/" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">Data Visualization with Python – Data Management and Visualization</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="haaspt.github.io/author/patrick-tyler-haas.html">Patrick Tyler Haas</a>
+            | <time datetime="Mon 21 March 2016">Mon 21 March 2016</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('haaspt.github.io/theme/images/post-bg.jpg')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p><img alt="" src="https://cdn-images-1.medium.com/max/2000/1*NjvjTHjXcA7O4_0YMTkiMA.png"></p>
+<h3>Data Visualization with Python</h3>
+<h4><a href="https://www.coursera.org/learn/data-visualization/">Data Management and Visualization</a> — Week 4</h4>
+<p><em>This is the fourth in a</em> <a href="https://medium.com/bricks-without-clay"><em>series of
+posts</em></a> <em>I’m writing as part o</em>f
+<em>Wesleyan University’s online</em> <a href="https://www.coursera.org/learn/data-visualization/"><em>Data Management and
+Visualization</em></a>
+<em>course.</em></p>
+<h4>Overview</h4>
+<p>This week we finally get to the visualization portion of our Data
+Management and Visualization series. Now that we’ve learned to <a href="https://medium.com/bricks-without-clay/basic-data-parsing-with-python-a1a0a6c441b6#.s2q6hgxfa">load,
+summarize</a>,
+<a href="https://medium.com/bricks-without-clay/more-data-parsing-with-python-1847aee19501#.ei1iab5hl">sort, cut, and slice our
+data</a>,
+let’s take a look at how we can visualize it.</p>
+<p>Visualization is a powerful tool, both for presenting our findings to
+others, as well as for our own analysis. Things like spread, variance,
+and modality can all be quickly gleaned from a good visualization.</p>
+<p>Here’s an example using the same <a href="https://d396qusza40orc.cloudfront.net/phoenixassets/data-management-visualization/OutlookOnLife%20Codebook.pdf">Outlook on
+Life</a>
+data from <a href="https://medium.com/bricks-without-clay">my previous posts</a>:</p>
+<p><img alt="Fig. 1: Count of respondents’ age group,
+by gender" src="https://cdn-images-1.medium.com/max/800/1*dV-MLfONJg9D73j9f5Yiww.png"></p>
+<p>This graph shows us the breakdown of age groups of the people who
+responded to this study, grouped by gender. At a glance it’s clear that
+both genders have a very similar distribution. They are both unimodal
+(they have a single peak, in the 55–65 age range), and skew to the left
+(i.e. towards younger respondents.)</p>
+<h4>Visualizing Politics, Anger, and Optimism</h4>
+<p>Before I begin, I want to discuss the type of data I’m working with and
+how it affects visualization.</p>
+<p>The 2012 Outlook on Life survey consists almost entirely of
+<em>categorical</em> data. <a href="https://en.wikipedia.org/wiki/Categorical_variable">Categorical
+data</a> is comprised
+of variables with a fixed number of possible values, like the answers to
+a multiple choice questionnaire. Compared to quantitative data,
+categorical data is more limited in the ways it can be described, and,
+by extension, visualized. Categorical data can’t, for example, produce
+scatter plots, regression lines, etc.</p>
+<p>To refresh your memory, here’s the Python code that I use to load and
+clean my data (for more detail, see last week’s post):</p>
+<p>First, I will create a single variable bar graph to see a distribution
+of how optimistic participants said they felt about the future. Using
+Python and the (amazing) module
+<a href="https://stanford.edu/~mwaskom/software/seaborn/">Seaborn,</a> we execute
+the following lines of code:</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">factorplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;hope&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Level of Optimism&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;How optimistic are you about your future&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Which produces this simple graph:</p>
+<p><img alt="Fig. 2: Count
+of optimism" src="https://cdn-images-1.medium.com/max/600/1*oHvsPQkpEH0v63qUMnrwnQ.png"></p>
+<p>This plot gives us a good idea of responses to the question of “When you
+think about your future, are you generally optimistic, pessimistic, or
+neither optimistic nor pessimistic?” Obviously, the majority of
+participants are optimistic about their future. Only a very small
+portion of respondents said they were pessimistic.</p>
+<p>The problem is this visualization is so <em>flat</em>. We’re only really
+looking at one variable, along with its count. As I mentioned,
+categorical data is somewhat limited in how it can be visualized, but
+with Seaborn, we can definitely add some extra dimensionality to this
+plot.</p>
+<p>I’ll run the same code as before, but this time add a new parameter
+‘hue’.</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">factorplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;hope&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;poli&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Which transforms the previous figure into this:</p>
+<p><img alt="Fig. 3: Levels of optimism by political
+orientation" src="https://cdn-images-1.medium.com/max/600/1*K-QSKo1no2Rbo_4MaDuREg.png"></p>
+<p>Great! Now we can simultaneously see levels of optimism <em>and</em> political
+orientation (in the form of the coloring of the bars) at the same time.
+By adding the hue parameter, we can now look at two variables at once.</p>
+<p>This chart largely tells the same story as the previous. Each political
+orientation have the same shape and skew as fig. 2. But we can make some
+new observations. For example, we can see that in comparison to the
+other orientations, Democrats tend to have a low level of pessimism. The
+number of Independents who said they are optimistic is very close to the
+number who said they were neither optimistic nor pessimistic, a trend
+not seen with the Democrats or Republicans in the study.</p>
+<p>We can add one more dimension to our analysis by splitting the graph
+into two subplots, as in fig. 1, using this
+code:</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">factorplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;hope&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;poli&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>This produces:</p>
+<p><img alt="Fig. 4: Level of optimism by political orientation
+and gender" src="https://cdn-images-1.medium.com/max/800/1*V2xgW1Tkw6AMlByRxg38yA.png"></p>
+<p>In this plot the overall trend is again the same, but we can still
+notice some interesting differences, like the relatively high level of
+pessimism among male Independents.</p>
+<p>For the data I’m using, lacking quantitative variables, I’m mostly stuck
+with bar graphs, which gets boring quickly. Fortunately I do have one
+quantitative variable I can use: age.</p>
+<p>Let’s say we want to see a breakdown of respondents by age, political
+orientation, and race. We can visualize that using a swarm plot:</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;poli&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;ethn&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The result is pretty striking:</p>
+<p><img alt="Fig. 5: Swarm plot of political orientation by age, with ethnicity
+as hue" src="https://cdn-images-1.medium.com/max/1000/1*YiksuiItx-qTLz25fRYGOg.png"></p>
+<p>Here are some of the variables we can readily glean from this graph:
+distribution of ages by political orientation, total count of
+respondents by political orientation, distribution of races by political
+orientation, distribution of races by age, and total count of
+respondents’ races. That’s a lot of data for a single graph.</p>
+<p>This graph shows that the age distributions for Republicans and
+Independents are uniformly distributed. However, it’s multi-modal for
+democrats, with peaks in the mid 20s, from 50 to 70, and large
+concentration at 81.</p>
+<p>It’s also clear that, in this survey sample, Republican respondents are
+almost exclusively white, while African Americans make up the majority
+of Democratic respondents. Overall Independents are a more varied group.</p>
+<h4>Conclusions</h4>
+<p>This has obviously been neither a comprehensive overview of Seaborn, nor
+have I visualized all of the possible combinations of variables in my
+dataset. Rather, what I wanted to show was the power and elegance of
+Seaborn, even when working with limiting categorical data. To see
+additional ways Seaborn can visualize categorical data, make sure to see
+<a href="https://stanford.edu/~mwaskom/software/seaborn/tutorial/categorical.html">their fantastic
+documentation.</a></p>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=Data Visualization with Python – Data Management and Visualization&amp;url=haaspt.github.io/data-visualization-with-python.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=haaspt.github.io/data-visualization-with-python.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=haaspt.github.io/data-visualization-with-python.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="haaspt.github.io/tag/politics.html">politics</a><a href="haaspt.github.io/tag/data-science.html">data science</a>                </aside>
+
+                <div class="clear"></div>
+
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+
+
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script type="text/javascript" src="haaspt.github.io/theme/js/script.js"></script>
+
+</body>
+</html>

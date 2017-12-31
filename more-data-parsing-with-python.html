@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>More Data Parsing with Python – Data Management and Visualization</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+  <link href="haaspt.github.io/" rel="canonical" />
+
+  <!-- Feed -->
+        <link href="haaspt.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Bricks Without Clay Full Atom Feed" />
+          <link href="haaspt.github.io/feeds/projects.atom.xml" type="application/atom+xml" rel="alternate" title="Bricks Without Clay Categories Atom Feed" />
+
+  <link href="haaspt.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+  <!-- Code highlight color scheme -->
+      <link href="haaspt.github.io/theme/css/code_blocks/github.css" rel="stylesheet">
+
+
+  <!-- Custom fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+    <link href="haaspt.github.io/more-data-parsing-with-python.html" rel="canonical" />
+
+        <meta name="description" content="Data Management and Visualization — Week 3">
+
+        <meta name="author" content="Patrick Tyler Haas">
+
+        <meta name="tags" content="politics">
+        <meta name="tags" content="data science">
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Bricks Without Clay"/>
+<meta property="og:title" content="More Data Parsing with Python – Data Management and Visualization"/>
+<meta property="og:description" content="Data Management and Visualization — Week 3"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="haaspt.github.io/more-data-parsing-with-python.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-03-13 00:00:00-08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="haaspt.github.io/author/patrick-tyler-haas.html">
+<meta property="article:section" content="projects"/>
+<meta property="article:tag" content="politics"/>
+<meta property="article:tag" content="data science"/>
+<meta property="og:image" content="haaspt.github.io/theme/images/post-bg.jpg">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "More Data Parsing with Python – Data Management and Visualization",
+  "headline": "More Data Parsing with Python – Data Management and Visualization",
+  "datePublished": "2016-03-13 00:00:00-08:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Patrick Tyler Haas",
+    "url": "haaspt.github.io/author/patrick-tyler-haas.html"
+  },
+  "image": "haaspt.github.io/theme/images/post-bg.jpg",
+  "url": "haaspt.github.io/more-data-parsing-with-python.html",
+  "description": "Data Management and Visualization — Week 3"
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+
+              <li role="presentation"><a href="haaspt.github.io/pages/about.html">About</a></li>
+              <li role="presentation"><a href="haaspt.github.io/pages/contact.html">Contact</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="haaspt.github.io/" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">More Data Parsing with Python – Data Management and Visualization</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="haaspt.github.io/author/patrick-tyler-haas.html">Patrick Tyler Haas</a>
+            | <time datetime="Sun 13 March 2016">Sun 13 March 2016</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('haaspt.github.io/theme/images/post-bg.jpg')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <h3>More Data Parsing with Python</h3>
+<h4><a href="https://www.coursera.org/learn/data-visualization/">Data Management and Visualization</a> — Week 3</h4>
+<p><em>This is the third in a</em> <a href="https://medium.com/bricks-without-clay"><em>series of
+posts</em></a> <em>I’m writing as part o</em>f
+<em>Wesleyan University’s online</em> <a href="https://www.coursera.org/learn/data-visualization/"><em>Data Management and
+Visualization</em></a>
+<em>course.</em></p>
+<h4>Overview</h4>
+<p>This week’s post will mainly serve as an addendum to <a href="https://medium.com/bricks-without-clay/basic-data-parsing-with-python-a1a0a6c441b6#.keups3t13">last
+week’s</a>
+where I showed how to load data into Python and do some basic
+manipulation using Pandas. This week I’ll demonstrate how to do the
+following:</p>
+<ol>
+<li>Drop invalid responses from our data</li>
+<li>Rename/recode variables in our data</li>
+<li>Group our data into “bins” that will simplify interpretation</li>
+</ol>
+<p>To briefly recap my project, I am looking at data from a 2012 survey
+that asked participants about their outlook on life and trying to
+determine how political opinions and demographics correlate with
+respondents’ overall level of optimism.</p>
+<h4>Invalid Responses</h4>
+<p>We’re fortunate that the Outlook on Life survey team already did much of
+the legwork in coding for us. Any invalid or missing responses to
+questions have been coded as ‘-1’ in the dataset.</p>
+<p>In addition to these invalid responses, some questions have responses
+that we can consider invalid <em>for our purposes</em>. For example, when asked
+about how they identified politically, respondents had the option to
+answer ‘Republican’, ‘Democrat’, ‘Independent’, as well as ‘something
+else’. These ‘other’ responses have no real meaning for our analysis and
+we can code them out as well.</p>
+<p>Pandas has its own standard for handling invalid data: NaN. This value,
+which stands for ‘Not a Number’, serves as a placeholder for blank data
+and by default Pandas will tend to ignore it when performing operations.</p>
+<p>This snippet demonstrates how I coded out invalid data for the variables
+I’m using:</p>
+<p>We can check if our code has worked by printing the following statement:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">data</span><span class="o">.</span><span class="n">W1_C1</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+<span class="n">NaN</span> <span class="mi">157</span>
+<span class="mi">1</span> <span class="mi">331</span>
+<span class="mi">2</span> <span class="mi">1251</span>
+<span class="mi">3</span> <span class="mi">555</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">W1_C1</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+
+
+<p>Notice that there are no longer summaries for ‘4’ or ‘-1’. Instead we
+have grouped both of these response types into NaN, which can be ignored
+in future analysis.</p>
+<h4>Recoding Responses</h4>
+<p>You may have noticed that our dataset uses special coding for both
+column names and responses. Columns are given names like W1_F1, while
+categorical responses (like what ethnicity are you) are coded as
+numbers. This makes a lot of sense when your organizing a large dataset,
+but can make it cumbersome to remember what each variable actually
+means.</p>
+<p>To make our lives a little easier let’s rename our columns in a way that
+we can more easily remember what kind of information they hold. We can
+do this by simply passing a list of values to the object ‘data.columns’:</p>
+<p>Simple enough! Now if we want to access the column with respondents’
+ages, we can just call ‘data.age’.</p>
+<p>Right now if I summarize the ‘gender’ column we would see two responses:
+1 and 2. This is fine as long as I have my codebook handy to tell me
+that 1=Male and 2=Female, but what if I decide that’s a bit too
+cumbersome to deal with? In that case we can have Pandas recode these
+numerical values with corresponding string values:</p>
+<p>Now our frequency count for gender is much more readable:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">data</span><span class="o">.</span><span class="n">gender</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+<span class="n">Female</span> <span class="mi">1262</span>
+<span class="n">Male</span> <span class="mi">1032</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">gender</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+
+
+<p>While we <em>could</em> recode all of our categorical data, we would sacrifice
+ease of use for intelligibility. It’s a lot easier to write code dealing
+with numerical values than long strings like ‘not very angry’.</p>
+<h4>Grouping Data</h4>
+<p>The last thing I’ll cover this week is how to group numerical data into
+convenient bins.</p>
+<p>Last week I mentioned that I couldn’t display the frequency table for my
+‘age’ column, because there were too many unique values to fit on one
+screen. Participants in the Outlook on Life survey ranged in age from 18
+to 81, and there are over 60 unique responses recorded to this question.
+Fortunately, Pandas makes it easy to group data into user defined bins.</p>
+<p>Since we’re dealing with age data the obvious solution is to group them
+into age ranges. I don’t want to get too granular with my data, so let’s
+just use intervals of 20. Using the following code, I’ll tell Pandas to
+create a new column, ‘age_group’, and group my age data into the
+following ranges: 18–25, 25–45, 45–65, 65–85.</p>
+<p>Now we can get a concise summary of our survey group by age ranges:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">data</span><span class="o">.</span><span class="n">age_group</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">23</span><span class="p">]:</span>
+<span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span> <span class="mi">240</span>
+<span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span> <span class="mi">644</span>
+<span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span> <span class="mi">991</span>
+<span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">85</span><span class="p">]</span> <span class="mi">383</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+
+
+<p>We can now see that our survey sample skews fairly old, with roughly 60%
+of respondents being over 45 years-old. This shows you how powerful and
+convenient bins can be.</p>
+<p>At this point we have a good handle of our data. We’ve loaded it into
+Python, coded out responses we don’t need, learned to replace and rename
+values, grouped it into handy bins, and learned how to quickly summarize
+variables. With all that at our disposal, we’re ready to create
+visualizations of our data.</p>
+<hr>
+<p><em>Next week’s post will cover data visualization using Python.</em></p>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=More Data Parsing with Python – Data Management and Visualization&amp;url=haaspt.github.io/more-data-parsing-with-python.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=haaspt.github.io/more-data-parsing-with-python.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=haaspt.github.io/more-data-parsing-with-python.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="haaspt.github.io/tag/politics.html">politics</a><a href="haaspt.github.io/tag/data-science.html">data science</a>                </aside>
+
+                <div class="clear"></div>
+
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+
+
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script type="text/javascript" src="haaspt.github.io/theme/js/script.js"></script>
+
+</body>
+</html>
